@@ -589,6 +589,39 @@ Al finalizar la ejecución del código debe mostrar el siguiente mensaje dónde 
 El resultado de la operación es: 12.2
 
 
+## Colecciones
 
+Las colecciones son importantes porque te permiten almacenar un conjunto de valores o elementos que pueden tener alguna propiedad en común y pueden ser recorridos o iterados, básicamente lo que quiere decir esto es que podemos contener muchos valores en una misma “variable” y podemos acceder a cada uno de ellos. Una colección puede estar vacía o contener diferentes elementos, algunos de los tipos de colecciones iterables son List, Set y Map.
 
+![](https://i.imgur.com/FwNjkix.png)
 
+## Coleccion tipo lista
+
+```dart
+void main() {
+  
+  List<String> amigos = [];
+  
+  amigos = ["A", "B", "C"];
+  
+  //  PROPIEDADES
+  
+  print(amigos.isEmpty); // Verifica si esta vacia la lista
+  print(amigos.length); // La longitud de la lista
+  
+  // FUNCIONES
+  
+  amigos.add("D"); // Agrega a la lista
+  
+  amigos.remove("A"); // Elimina de la lista
+  
+  amigos.insert(0,"Z"); // Agrega segun la posicion
+  
+  for(int i = 0; i < amigos.length ; i++)
+  {
+    print("amigos[$i] : ${amigos[i]}");
+  }
+  
+}
+
+```
