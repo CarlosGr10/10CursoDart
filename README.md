@@ -291,6 +291,7 @@ La temperatura en grados centígrados siempre será entera, pero Fahrenheit pued
 La lista de ciudades puede tener 1 o más nombres (cambiar diariamente).
 Dentro del código deben estar todas las instrucciones, a modo de comentarios, necesarias para que otro programador sepa cuáles valores cambiar todos los días.
 
+
 ```dart
 void main() {
  
@@ -625,3 +626,243 @@ void main() {
 }
 
 ```
+
+## Colecciones tipo set
+
+![](https://i.imgur.com/dAB4v7j.png)
+
+```dart
+void main() {
+ Set<String> paises = {};
+ paises = {"Mexico","Argentina","Colombia"};
+ 
+ paises.add("Brasil");
+  
+ print(paises);
+ 
+ for(int i = 0;i< paises.length;i++)
+ {
+   print(paises.elementAt(i));
+ }
+  
+}
+
+```
+
+## Colecciones tipo mapa
+
+![](https://i.imgur.com/wEaaL0G.png)
+
+```dart
+void main() {
+  
+ Map<String, dynamic> persona = {
+   "nombre":"Cool",
+    "edad": 12,
+   "pais":"mexico",
+ };
+  
+ print(persona.keys);
+ print(persona.values);
+ 
+ print(persona["nombre"]);
+  
+ 
+  
+ if(persona["comida"] == null)
+ {
+    print("No tiene esta key");  
+ }else
+ {
+   print(persona["comida"]);
+ }
+  
+}
+```
+
+## Coleccion de colecciones 
+
+```dart
+void main() {
+  
+ Map restaurant =
+ {
+   "nombre": "The restaurant",
+   "estrellas": [1,2,3,4,5]
+ };
+  
+ if(restaurant["estrellas"] == null)
+ {
+   print("No hay estrellas");
+ }else{
+   List<int> estrellas = restaurant["estrellas"];
+   print(estrellas);
+   
+   int suma = 0;
+   for(int i = 0; i < estrellas.length;i++){
+      suma += estrellas[i];
+   }
+   
+   double promedio = suma / estrellas.length;
+   restaurant.addAll({"promedio":promedio});
+  
+  print(restaurant);
+ }
+}
+
+```
+
+### Union de colecciones
+
+- Con el metodo addAll
+
+```dart
+void main() {
+  
+ List<String> colores_primarios = ["rojo","amarillo","azul"];
+  
+ List<String> colores_secundarios = ["morado","verde","naranja"];
+  
+ colores_secundarios.addAll(colores_primarios);
+ 
+ print(colores_secundarios);
+  
+}
+```
+
+- Con tres puntos dentro de otra lista
+
+```dart
+void main() {
+  
+ List<String> colores_primarios = ["rojo","amarillo","azul"];
+  
+ List<String> colores_secundarios = ["morado","verde","naranja",...colores_primarios];
+  
+ 
+ print(colores_secundarios);
+  
+}
+```
+
+- Declarando una nueva coleccion
+
+```dart
+void main() {
+  
+ List<String> colores_primarios = ["rojo","amarillo","azul"];
+  
+ List<String> colores_secundarios = ["morado","verde","naranja"];
+  
+
+  List<String> colores = [
+    ...colores_primarios,
+    ...colores_secundarios
+  ];
+  
+  print(colores);
+  
+}
+```
+
+
+## Flujo dentro de colecciones
+
+- Condicion if dentro de una lista
+
+```dart
+void main() {
+ 
+ bool agregarAmarillo = true;
+ bool agregarAzul = false;
+  
+ List<String> colores = [
+   "rojo",
+   "verde",
+   if(agregarAmarillo) "Amarillo",
+   if(agregarAzul) "Azul",
+ ];
+ 
+  print(colores);
+
+}
+
+```
+
+- Bucle for dentro de una lista
+
+```dart
+void main() {
+ 
+ bool agregarAmarillo = true;
+ bool agregarAzul = false;
+  
+ List<String> colores = [
+   "rojo",
+   "verde",
+   "rosa",
+   "azul",
+ ];
+ 
+ List<String> nuevosColores = [
+   "blanco",
+   for(int i = 0; i < colores.length;i++) colores[i],
+ ];
+  
+ print(nuevosColores);
+
+}
+```
+
+# Ejercicio 3 
+
+Google Maps es una herramienta de Google que permite localizar diferentes tipos de comercios, entre ellos restaurantes.
+
+La información es almacenada en bases de datos no relaciones y puede ser extraído en la siguiente estructura mediante el lenguaje de programación Dart.
+
+
+```dart
+Set restaurantes = {
+
+{
+“nombre”: “El novillo alegre”,
+“tipo”: “Argentina”,
+“calificaciones”: [4, 5, 2, 1, 2]
+},
+
+{
+“nombre”: “Baires Grill”,
+“tipo”: “Argentina”,
+“calificaciones”: [3, 1, 3, 5, 5, 2, 3]
+},
+
+{
+“nombre”: “Mario Brothers”,
+“tipo”: “Italiana”,
+“calificaciones”: [4, 3, 2, 1, 1]
+},
+
+{
+“nombre”: “Molto bene”,
+“tipo”: “Italiana”,
+“calificaciones”: [4, 3, 1, 1, 5]
+}
+
+};
+
+```
+
+Un conjunto de restaurantes que no se puede repetir, que contiene varios mapas con nombre, tipo y una lista con calificaciones.
+
+Google requiere que un programador realice un código en Dart para obtener un resumen de la calificación de los diferentes tipos de restaurantes de una zona. Realizando un promedio de las calificaciones por tipo, el resultado debe ser el siguiente.
+
+```dart
+Map rating = {
+“Italiana”: 3.0,
+“Argentina”: 2.5,
+“Todos”: 2.77
+};
+
+```
+
+Los tipos de comida pueden variar, al igual que las cantidades de la lista de calificación.
